@@ -1,38 +1,43 @@
 import streamlit as st
-import face_recognition
-import matplotlib.patches as mpatches
-import matplotlib.pyplot as plt
-import numpy as np
-from PIL import ImageDraw, Image
-from IPython.display import display
-from func import func_face_recog
+import requests
+import json
 
-print("-------------app start -------------")
+page = st.sidebar.selectbox('Choose your page', ['registration', 'list'])
 
-st.title("face recog")
+if page == 'registration':
+    st.title('User登録画面')
+    with st.form(key='registration'):
+        name_content: str = st.text_input('名前入力', max_chars=20)
+        age_content: int = st.number_input('年齢入力',0,100,0)
+        hometown_content: str = st.text_input('出身地入力', max_chars=10)
 
-uploaded_file = st.file_uploader("顔が写っている写真をjpgかpngでアップロードしてください。")
-submit_button = st.button('顔検出')
+        print(name_content)
+        # print(name_content.apparent_encoding)
 
-if uploaded_file is not None:
-    # image = Image.open(uploaded_file)
-    # img_array = np.array(image)
-    # st.image(
-    #     image, caption='upload images',
-    #     use_column_width=True
-    # )
-    if submit_button:
-        func_face_recog.img_output(uploaded_file)
-    else:
-        st.error("顔検出ボタンを押してください")
+        data = {
+                "name": name_content,
+                "age": age_content,
+                "hometown": hometown_content
+        }
+        print(json.dumps(data,ensure_ascii=False))
+    
+        submit_button = st.form_submit_button(label='User登録')
 
-# st.selectbox('コンボボックス',('選択1','選択2'))
-# st.checkbox('チェックボックス')
-# st.radio('ラジオボタン',('ラジオボタン1','ラジオボタン2'))
-# st.date_input('日付インプット')
-# st.text_input('インプットボックス')
-# st.text_area('テキストエリア')
-# st.selectbox("メニューリスト", ("選択肢1", "選択肢2", "選択肢3")) 
-# st.multiselect("メニューリスト（複数選択可）", ("選択肢1", "選択肢2", "選択肢3")) 
+        if submit_button:
+            url = 'https://2ov1sz.deta.dev/users/'
+            res = requests.post(
+                url,
+                data=json.dumps(data,ensure_ascii=False).encode('utf-8').decode('unicode-escape')
+            )
+            if res.status_code == 200:
+                st.success('User登録完了')
+            print(res.json())
+            st.json(res.json())
 
-print("-------------app end -------------")
+elif page == 'list':
+    st.title('User一覧画面')
+    res = requests.get('https://2ov1sz.deta.dev/users/')
+    records = res.json()
+    print(records)
+    for record in records:
+        st.subheader(record)
