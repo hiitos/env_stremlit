@@ -36,7 +36,7 @@ if (uploaded_file is not None):
         
         st.success("読み込み成功")
         st.image(uploaded_file)
-        model = torch.load(model_path, map_location=torch.device("cpu"))
+        model = torch.load("data/model_cnn.pth", map_location=torch.device("cpu"))
         st.write(func_classifier.result(uploaded_file,model))
     else:
         st.error("画像を分類するボタンを押してください")
