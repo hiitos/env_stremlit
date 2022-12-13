@@ -20,7 +20,7 @@ if (uploaded_file is not None):
     # モデルパス　app.pyと同じディレクトリに入れる
     try:
         model_path = "data/model_cnn.pth"
-        torch.load("data/model_cnn.pth", map_location=torch.device("cpu"))
+        torch.load(model_path, map_location=torch.device("cpu"))
     except FileNotFoundError:
         eroor_message = True
         model_path = st.file_uploader("modelをアップロードしてください。")
@@ -36,7 +36,7 @@ if (uploaded_file is not None):
         
         st.success("読み込み成功")
         st.image(uploaded_file)
-        model = torch.load("data/model_cnn.pth", map_location=torch.device("cpu"))
+        model = torch.load(model_path, map_location=torch.device("cpu"))
         st.write(func_classifier.result(uploaded_file,model))
     else:
         st.error("画像を分類するボタンを押してください")
