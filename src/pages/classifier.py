@@ -12,7 +12,7 @@ path = "./"
 files = os.listdir(path)
 print(files)        # ['dir1', 'dir2', 'file1', 'file2.txt', 'file3.jpg']
 
-print("-------------app start -------------")
+print("-------------classifier start -------------")
 
 st.title("classifier")
 
@@ -34,4 +34,4 @@ if (uploaded_file is not None):
         st.error("画像を分類するボタンを押してください")
 
 # "model_cnn.pth"
-print("-------------app end -------------")
+print("-------------classifier end -------------")
