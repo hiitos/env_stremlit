@@ -7,7 +7,6 @@ import os
 import shutil
 from PIL import Image
 import numpy as np
-import streamlit as st
 
 # UPLOAD_FOLDER = "./static/images/"
 

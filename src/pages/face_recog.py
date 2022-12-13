@@ -1,11 +1,11 @@
 import streamlit as st
-import face_recognition
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import ImageDraw, Image
 from IPython.display import display
-from func import func_face_recog
+# import face_recognition
+# from func import func_face_recog
 
 print("-------------face recog start -------------")
 
