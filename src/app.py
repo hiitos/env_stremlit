@@ -40,4 +40,4 @@ elif page == 'list':
     records = res.json()
     print(records)
     for record in records:
-        st.subheader(record)
+        st.write(record)

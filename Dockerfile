@@ -6,7 +6,10 @@ RUN apt-get -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 RUN apt-get install -y vim less
 # RUN apk add --no-cache make cmake gcc g++ zlib-dev jpeg-dev
+
+# これがface recognitionに必要
 RUN apt install -y build-essential cmake
+
 # apt install -y build-essential cmake
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
