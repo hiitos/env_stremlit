@@ -1,16 +1,13 @@
 
 import streamlit as st
 import numpy as np
-from PIL import ImageDraw, Image
-from IPython.display import display
 from func import func_classifier
 import torch
 import os
 
-path = "./"
-
-files = os.listdir(path)
-print(files)        # ['dir1', 'dir2', 'file1', 'file2.txt', 'file3.jpg']
+# path = "./"
+# files = os.listdir(path)
+# print(files)        # ['dir1', 'dir2', 'file1', 'file2.txt', 'file3.jpg']
 
 print("-------------classifier start -------------")
 

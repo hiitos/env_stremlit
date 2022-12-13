@@ -1,9 +1,9 @@
 import streamlit as st
-import matplotlib.patches as mpatches
-import matplotlib.pyplot as plt
-import numpy as np
-from PIL import ImageDraw, Image
-from IPython.display import display
+# import matplotlib.patches as mpatches
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from PIL import ImageDraw, Image
+# from IPython.display import display
 # import face_recognition
 # from func import func_face_recog
 

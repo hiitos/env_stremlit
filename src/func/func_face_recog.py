@@ -4,8 +4,7 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import ImageDraw, Image
-from IPython.display import display
-
+# from IPython.display import display
 # def draw_faces(img, locs):
     
 def img_output(uploaded_file):
