@@ -24,7 +24,7 @@ if (uploaded_file is not None):
         st.image(uploaded_file)
         
         # モデルパス　app.pyと同じディレクトリに入れる
-        model_path = "model_cnn.pth"
+        model_path = "data/model_cnn.pth"
         model = torch.load(model_path, map_location=torch.device("cpu"))
         st.write(func_classifier.result(uploaded_file,model))
     else:
